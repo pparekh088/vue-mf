@@ -4,18 +4,17 @@
 </template>
 
 <script>
+import * as ScanditSDK from "scandit-sdk";
+
 
 export default {
   name: 'Profile',
 
-  mounnted() {
-    this.$nextTick(() => {
-      import('profile/profileApp').then(profileApp => {
-        profileApp.mount('#profileApp')
-      }).catch(error => {
-        console.error(error)
-      })
-    })
+  async mounnted() {
+    // inside an async function
+    await ScanditSDK.configure("YOUR_LICENSE_KEY_IS_NEEDED_HERE", {
+      engineLocation: "dist/",
+    });
   }
 }
 </script>
